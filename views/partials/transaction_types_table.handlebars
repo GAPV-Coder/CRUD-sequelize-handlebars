@@ -1,0 +1,19 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Transaction Type:</th>
+      <th scope="col">Update/Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+      {{#each transactionTypes}}
+        <tr>
+            <th scope="row">{{this.id}}</th>
+            <td>{{this.type}}</td>
+            <td><button>Edit</button>
+            <button>Delete</button></td>
+        </tr>
+      {{/each}}
+  </tbody>
+</table>
