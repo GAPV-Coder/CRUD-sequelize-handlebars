@@ -82,10 +82,10 @@ app.post("/customers", async (req, res) => {
 });
 
 app.post("/accounts", async (req, res) => {
-	const { accountType, customer } = req.body;
+	const { accountType, customer, balance } = req.body;
 	try {
 		let results = await Accounts.create({
-			balance: 0,
+			balance,
 			date_opened: NOW(),
 			account_types_id: accountType,
 			customers_id: customer,
@@ -172,5 +172,6 @@ app.get("/accounts/:id", async (req, res) => {
 	res.render("accounts_update_form", { currentAccount: results, accountTypes });
 });
 
+// starting server listening
 const PORT = process.env.PORT;
 app.listen(PORT, () => console.log("server is up and listening on port", PORT));
