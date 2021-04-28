@@ -86,7 +86,7 @@ app.post("/accounts", async (req, res) => {
 	try {
 		let results = await Accounts.create({
 			balance,
-			date_opened: NOW(),
+			date_opened: CURRENT_DATE(),
 			account_types_id: accountType,
 			customers_id: customer,
 		});
