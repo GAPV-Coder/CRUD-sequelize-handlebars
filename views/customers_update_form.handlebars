@@ -1,3 +1,4 @@
+<h5 class="mb-4">Please edit the following fields and save changes to update the information selected:</h5>
 <form action="/customers/update/{{currentCustomer.id}}" method="POST">
   <div class="mb-3">
     <label for="inputEmail" class="form-label">Email:</label>
@@ -7,10 +8,10 @@
     <label for="inputFirstName" class="form-label">First Name:</label>
     <input type="text" class="form-control" id="inputFirstName" name="firstName" value={{currentCustomer.name}}>
   </div>
-  <div class="mb-3">
+  <div class="mb-4">
     <label class="form-label" for="inputLastName">Last Name:</label>
     <input type="text" class="form-control" id="inputLastName" name="lastName" value={{currentCustomer.last_name}}>
   </div>
   <button type="submit" class="btn btn-success">Save</button>
-  <button type="button" class="btn btn-danger">Go Back</button>
+  <a href="/customers" class="btn btn-dark">Go Back</a>
 </form>

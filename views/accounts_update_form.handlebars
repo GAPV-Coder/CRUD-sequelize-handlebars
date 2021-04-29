@@ -1,14 +1,9 @@
-<form action="/accounts/{{currentAccount.id}}" method="POST">
-<div class="mb-3">
-    <label for="inputBalance" class="form-label">Balance:</label>
-    <input type="text" class="form-control" id="inputBalance" name="balance" value={{currentAccount.balance}}>
+<h5 class="mb-4">Please edit the following fields and save changes to update the information selected:</h5>
+<form action="/accounts/update/{{currentAccount.id}}" method="POST">
+  <div class="mb-4">
+      <label for="inputBalance" class="form-label">Balance:</label>
+      <input type="text" class="form-control" id="inputBalance" name="balance" value={{currentAccount.balance}}>
   </div>
-  <label for="inputAccountType">Account Types</label>
-  <select class="form-select" name="accountType" id="inputAccountType">
-    <option selected>{{accountTypes.}}</option>
-    {{#each types}}
-    <option value={{this.id}}>{{this.type}}</option>
-    {{/each}}
-  </select>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-success">Save</button>
+  <a href="/accounts" class="btn btn-dark">Go Back</a>
 </form>

@@ -86,7 +86,6 @@ app.post("/accounts", async (req, res) => {
 	try {
 		let results = await Accounts.create({
 			balance,
-			date_opened: CURRENT_DATE(),
 			account_types_id: accountType,
 			customers_id: customer,
 		});
@@ -139,7 +138,6 @@ app.post("/transaction-types", async (req, res) => {
 });
 
 // UPDATE
-
 app.get("/customers/:id", async (req, res) => {
 	let results = await Customers.findByPk(req.params.id, { raw: true });
 	res.render("customers_update_form", { currentCustomer: results });
@@ -166,10 +164,59 @@ app.post("/customers/update/:id", async (req, res) => {
 
 app.get("/accounts/:id", async (req, res) => {
 	let results = await Accounts.findByPk(req.params.id, { raw: true });
-	let accountTypes = await AccountTypes.findByPk(results.account_types_id, {
-		raw: true,
-	});
-	res.render("accounts_update_form", { currentAccount: results, accountTypes });
+	res.render("accounts_update_form", { currentAccount: results });
+});
+
+app.post("/accounts/update/:id", async (req, res) => {
+	const id = req.params.id;
+	const { balance } = req.body;
+	try {
+		let results = await Accounts.update(
+			{
+				balance,
+			},
+			{
+				where: {
+					id,
+				},
+			}
+		);
+		res.send(`account with id ${id} has been updated`);
+	} catch (error) {
+		console.log(error);
+		res.status(400).send(`account with id: ${id} was not updated`);
+	}
+});
+
+// DELETE
+app.post("/customers/delete/:id", async (req, res) => {
+	const id = req.params.id;
+	try {
+		await Customers.destroy({
+			where: {
+				id,
+			},
+		});
+		res.send(`customer with id ${id} has been removed successfully`);
+	} catch (error) {
+		console.log(error);
+		res.status(400).send(`not able to delete customer with id ${id}`);
+	}
+});
+
+app.post("/accounts/delete/:id", async (req, res) => {
+	const id = req.params.id;
+	try {
+		await Accounts.destroy({
+			where: {
+				id,
+			},
+		});
+		res.send(`account with id ${id} has been removed successfully`);
+	} catch (error) {
+		console.log(error);
+		res.status(400).send(`not able to delete account with id ${id}`);
+	}
 });
 
 // starting server listening

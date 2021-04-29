@@ -11,9 +11,6 @@ module.exports = {
 			balance: {
 				type: Sequelize.INTEGER,
 			},
-			date_opened: {
-				type: Sequelize.DATEONLY,
-			},
 			account_types_id: {
 				type: Sequelize.INTEGER,
 			},

@@ -3,17 +3,19 @@
     <label for="inputAmount" class="form-label">Amount:</label>
     <input type="text" class="form-control" id="inputAmount" name="amount">
   </div>
-  <select class="form-select" name="account">
-    <option selected>Account:</option>
+  <label for="accountSelect">Account:</label>
+  <select class="form-select mb-3" name="account" id="accountSelect">
+    <option selected>Choose an option</option>
     {{#each accounts}}
     <option value={{this.id}}>{{this.id}}</option>
     {{/each}}
   </select>
-  <select class="form-select" name="transactionType">
-    <option selected>Transaction Type:</option>
+  <label for="transactionTypeSelect">Transaction Type:</label>
+  <select class="form-select mb-3" name="transactionType" id="transactionTypeSelect">
+    <option selected>Choose an option</option>
     {{#each transactionTypes}}
     <option value={{this.id}}>{{this.type}}</option>
     {{/each}}
   </select>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-success">Submit</button>
 </form>

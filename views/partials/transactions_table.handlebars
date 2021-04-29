@@ -1,11 +1,10 @@
-<table class="table">
+<table class="table my-5">
   <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Amount</th>
       <th scope="col">Account ID</th>
       <th scope="col">Transaction Type ID</th>
-      <th scope="col">Update/Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -15,8 +14,6 @@
             <td>{{this.amount}}</td>
             <td>{{this.accounts_id}}</td>
             <td>{{this.transaction_types_id}}</td>
-            <td><button>Edit</button>
-            <button>Delete</button></td>
         </tr>
       {{/each}}
   </tbody>

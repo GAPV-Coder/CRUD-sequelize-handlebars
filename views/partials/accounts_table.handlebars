@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table my-5">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -6,7 +6,7 @@
       <th scope="col">Date Opened</th>
       <th scope="col">Account Type ID</th>
       <th scope="col">Customer ID</th>
-      <th scope="col">Update/Delete</th>
+      <th scope="col" class="text-center">Update/Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -17,8 +17,8 @@
             <td>{{this.date_opened}}</td>
             <td>{{this.account_types_id}}</td>
             <td>{{this.customers_id}}</td>
-            <td><a href="/accounts/{{this.id}}" class="btn btn-primary">Edit</a>
-            <button>Delete</button></td>
+            <td class="d-flex justify-content-around"><a href="/accounts/{{this.id}}" class="btn btn-info">Edit</a>
+            <form action="/accounts/delete/{{this.id}}" method="POST"><button type="submit" class="btn btn-warning">Delete</button></form></td>
         </tr>
       {{/each}}
   </tbody>
