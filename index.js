@@ -74,9 +74,8 @@ app.post("/customers", async (req, res) => {
 			name: firstName,
 			last_name: lastName,
 		});
-		res.send("a new customer has been created");
+		res.redirect("/customers");
 	} catch (err) {
-		console.log(err);
 		res.status(400).send("new customer could not been added");
 	}
 });
@@ -89,9 +88,8 @@ app.post("/accounts", async (req, res) => {
 			account_types_id: accountType,
 			customers_id: customer,
 		});
-		res.send("a new account has been created");
+		res.redirect("/accounts");
 	} catch (error) {
-		console.log(error);
 		res.status(400).send("a new account could not be created");
 	}
 });
@@ -104,9 +102,8 @@ app.post("/transactions", async (req, res) => {
 			accounts_id: account,
 			transaction_types_id: transactionType,
 		});
-		res.send("a new transaction has been created");
+		res.redirect("/transactions");
 	} catch (error) {
-		console.log(error);
 		res.status(400).send("a new transaction could not be created");
 	}
 });
@@ -117,9 +114,8 @@ app.post("/account-types", async (req, res) => {
 		let results = await AccountTypes.create({
 			type: accountType,
 		});
-		res.send("a new account type has been created");
+		res.redirect("/account_types");
 	} catch (error) {
-		console.log(error);
 		res.status(400).send("a new account type could not be created");
 	}
 });
@@ -130,9 +126,8 @@ app.post("/transaction-types", async (req, res) => {
 		let results = await TransactionTypes.create({
 			type: transactionType,
 		});
-		res.send("a new transaction type has been created");
+		res.redirect("/transaction-types");
 	} catch (error) {
-		console.log(error);
 		res.status(400).send("a new transaction type could not be created");
 	}
 });
@@ -155,9 +150,8 @@ app.post("/customers/update/:id", async (req, res) => {
 				},
 			}
 		);
-		res.send(`customer with id ${id} has been updated`);
+		res.redirect(`/customers/${id}`);
 	} catch (error) {
-		console.log(error);
 		res.status(400).send(`customer with id:${id} was not updated`);
 	}
 });
@@ -181,9 +175,8 @@ app.post("/accounts/update/:id", async (req, res) => {
 				},
 			}
 		);
-		res.send(`account with id ${id} has been updated`);
+		res.redirect(`/accounts/${id}`);
 	} catch (error) {
-		console.log(error);
 		res.status(400).send(`account with id: ${id} was not updated`);
 	}
 });
@@ -197,9 +190,8 @@ app.post("/customers/delete/:id", async (req, res) => {
 				id,
 			},
 		});
-		res.send(`customer with id ${id} has been removed successfully`);
+		res.redirect("/customers");
 	} catch (error) {
-		console.log(error);
 		res.status(400).send(`not able to delete customer with id ${id}`);
 	}
 });
@@ -212,9 +204,8 @@ app.post("/accounts/delete/:id", async (req, res) => {
 				id,
 			},
 		});
-		res.send(`account with id ${id} has been removed successfully`);
+		res.redirect("/accounts");
 	} catch (error) {
-		console.log(error);
 		res.status(400).send(`not able to delete account with id ${id}`);
 	}
 });
